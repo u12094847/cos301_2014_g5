@@ -1,0 +1,50 @@
+{% load i18n %}<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    {% block styles %}
+    {% endblock %}
+
+    {% block extra_styles %}{% endblock %}
+
+    <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="{% if appointments_active %}appointments_page{% endif %}">
+    <!--[if lt IE 9]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p><![endif]-->
+    {% block nav %}{% endblock %}
+
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+
+    <div id="main" data-view="{% block view %}{% endblock %}">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        {% block footer %}{% endblock %}
+    </footer>
+
+    {% block extra_body %}{% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+
+    {% block extra_scripts %}{% endblock %}
+
+    {% block analytics %}{% endblock %}
+</body>
+</html>
