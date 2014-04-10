@@ -8,3 +8,22 @@ class Report:
   
   def createReport(self):
     
+    
+  
+    
+  def average(array):
+    return sum(array) * 1.0 / len(array)
+    
+
+  def stdDeviation(array):
+    
+    
+    avg = average(array)
+    variance = map(lambda x: (x - avg)**2, s)
+    import math
+    standard_deviation = math.sqrt(average(variance))
+    return standard_deviation
+    
+    
+    
+    
