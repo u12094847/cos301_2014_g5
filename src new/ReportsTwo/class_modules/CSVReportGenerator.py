@@ -3,7 +3,7 @@ from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import ReportGenerator
 
 class CSVReportGenerator(ReportGenerator):
-  __init__(self, _request):		#Constructor
+  def __init__(self, _request):		#Constructor
     self.reportRequest = _request
   
   #acceptes list of lists in data
@@ -12,10 +12,10 @@ class CSVReportGenerator(ReportGenerator):
 
    self.doc_heading = course+".csv"
 
-    fileName = self.doc_heading
-    with open(fileName, 'wb') as csvOutPut:
-        filewriter = csv.writer(csvOutput, quoting=csv.QUOTE_ALL)
+  fileName = self.doc_heading
+  with open(fileName, 'wb') as csvOutPut:
+    filewriter = csv.writer(csvOutput, quoting=csv.QUOTE_ALL)
 
-        filewriter.writerow(rowdata)
+    filewriter.writerow(rowdata)
 
 
