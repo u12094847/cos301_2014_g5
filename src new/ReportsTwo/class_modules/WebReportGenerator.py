@@ -6,7 +6,7 @@ from class_modules.StudentMarksReport import StudentMarksReport
 from class_modules.AssessmentReport import AssessmentReport
 
 class WebReportGenerator(ReportGenerator):
-  __init__(self, _request):		#Constructor
+  def __init__(self, _request):		#Constructor
     self.reportRequest = _request
   
   

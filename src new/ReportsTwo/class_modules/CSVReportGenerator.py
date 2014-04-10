@@ -2,7 +2,7 @@ from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import ReportGenerator
 
 class CSVReportGenerator(ReportGenerator):
-  __init__(self, _request):		#Constructor
+  def __init__(self, _request):		#Constructor
     self.reportRequest = _request
   
   

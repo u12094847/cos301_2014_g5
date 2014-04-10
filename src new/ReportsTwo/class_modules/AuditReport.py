@@ -3,7 +3,7 @@ from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import Report
 
 class AuditReport(Report):
-  __init__(self,startDate,endDate,course):
+  def __init__(self,startDate,endDate,course):
     createReport(startDate,endDate,course)
 	
     
