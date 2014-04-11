@@ -33,3 +33,5 @@ class AssessmentReport(Report):
 
   def returnBody(self):
         return self.body
+
+  

@@ -107,4 +107,8 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '..', 'templates'),
 )
 
+LOCALE_PATHS = (
+    'class_modules'
+)
+
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
