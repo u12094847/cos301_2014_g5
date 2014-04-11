@@ -17,5 +17,6 @@ class CSVReportGenerator(ReportGenerator):
     filewriter = csv.writer(csvOutput, quoting=csv.QUOTE_ALL)
 
     filewriter.writerow(rowdata)
-
+  
+  #return csvOutput
 
