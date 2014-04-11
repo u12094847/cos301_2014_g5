@@ -9,7 +9,7 @@ class AssessmentReport(Report):
   def average(array):
 	    	return sum(array) * 1.0 / len(array)
   
-  def createReport(self):
+  def createReport(self,assessment,course):
 	self.doc_heading = "Assessment Report for " + course + assessment
     #self.column_headings = getAssessment(assessment,course) 
 	#self.body = getAuditBody(assessment,course)
