@@ -10,6 +10,8 @@ marks = 'studentMark.csv'
 
 class StudentMarksReport(Report):
 
+	def __init__(self,data_file,course,student):
+		createReport(data_file,course,student)
  
 	def create_report(data_file,course,student):
 	    pdf_name = student + ' marks report.pdf'

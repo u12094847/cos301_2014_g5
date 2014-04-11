@@ -1,3 +1,4 @@
+import pdf
 from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import ReportGenerator
 
