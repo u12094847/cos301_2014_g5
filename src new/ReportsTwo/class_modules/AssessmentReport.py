@@ -1,37 +1,52 @@
 import csv
 from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import Report
+
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+
 #from Report import Report
 
 class AssessmentReport(Report):
-  def __init__(self,assessment,course):
-        self.createReport(assessment,course)
+    reportName = ""
+    headings = []
+    data = []
+    marks = []
+    def __init__(self,name,headings,data):
+        self.reportName = name
+        self.headings = headings
+        self.data = data
+        marks = []
+        for row in data :
+            marks.append(row[1])
   
-  #def average(array):
-        #return sum(array) * 1.0 / len(array)
-  
-  def createReport(self,assessment,course):
-	self.doc_heading = "Assessment Report for " + course +" "+assessment
-    #self.column_headings = getAssessment(assessment,course) 
-	#self.body = getAuditBody(assessment,course)
-	#csv in use for now
-	total = 0
-	#self.count = 0
-        assessments = []
-        csvreader = csv.reader(open('assessment.csv', "rb"))
-	for count, row in enumerate(csvreader):
- 		# store the data
- 		assessments.append(row)
-		#if count > 0 :
-                    #total += row[1]
-		#count += 1
-	#ave = average(total)
-	#self.body.append("Average",ave)
-	self.body = assessments
-  def returnHeader(self):
-        return self.doc_heading
+    def getName(self):
+        return self.reportName
 
-  def returnBody(self):
-        return self.body
+    def getHeadings(self):
+        return self.headings
+    def getData(self):
+        return self.data
+    def getStdDeviation(self):
+        return stdDeviation(marks)
+    def getAverage(self):
+        return average(marks)
+    def getChart(self):
+        d = Drawing(300, 200)
+        chart = VerticalBarChart()
+        chart.width = 260
+        chart.height = 160
+        chart.x = 100
+        chart.y = sum(marks)
+        chart.data = [[1,2], [3,4]]
+        chart.categoryAxis.categoryNames = ['foo', 'bar']
+        chart.valueAxis.valueMin = 0
+
+        d.add(chart)
+        d.save(fnRoot='test', formats=['png', 'pdf'])
+        
+        return d
+
+  
 
   
