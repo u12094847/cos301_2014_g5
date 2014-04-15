@@ -1,1 +1,50 @@
-Content to be added
+Request for Report Generation
+
+Below are the different parameters, depending on the kind or report and output type.
+
+1. Type of Report
+	1.1. Assessment Report ("assessment" )
+	1.2 Student Marks Report("studentmarks")
+	1.3. Audit Report ("audit")
+	
+	
+2. Granularity of Assessment
+	2.1 General Assessments ("all")
+	2.2 Semester Tests "ST", Class Tests "CT", Practicals "P", Tutorials "T", Exams ("E") etc
+	2.3 ST1, ST2, CT1, CT2, CT3, P1, P2, P3, T1, T2, T3, etc
+	
+	
+3. Output Type
+	3.1 PDF ("pdf")
+	3.2 CSV ("csv")
+	3.3 Object for Rendering ("object")
+	
+4. Student Number
+
+5. Module Code
+
+6. Date From (dd/mm/yyyy)
+
+7. Date To (dd/mm/yyyy)
+
+Example calls:
+
+  1. Assessment Report
+	generateReport("COS332", assessment, "pdf")
+	
+  2. Student Marks Report
+	generateReport("COS332", "10033948", "assessment[]", "csv")
+	
+  3. Audit Report
+	generateReport("COS332", "uid", "Table", "01/01/2014", "12/04/2014", "object")
+	
+	
+
+1. generateReport("assessment", "ST1, ST2", "pdf","null" , "COS332")
+2. generateReport("assessment", "all", "pdf", "null", "COS222")
+3. generateReport("audit", "ST", "csv", "null", "COS301")
+4. generateReport("studentmarks", "P","ARender", "10176382", "COS222")
+N.B. The request arguments must be encapsulated in a json object instead. The list of examples
+above is meant to bring about a clearer understanding of the parameter list.
+An actual call would be something like: generateReport(request), where request is a JSON object
+containing all arguments listed above.
