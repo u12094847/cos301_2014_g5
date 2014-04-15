@@ -1,42 +1,73 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import landscape
 
 import csv
 
-data_file = 'data.csv'
+data_file = 'data20.csv'
 course_name = 'COS 212'
+
+
+
 
 
 def create_report(data_file):
     pdf_name = course_name + ' Marksheet.pdf'
-    c = canvas.Canvas(pdf_name, pagesize = A4)
-    heighty = 770
-    widthy = 30
+    
+    fnt = 'Helvetica'
+    sz = 12
+    
+    c = canvas.Canvas(pdf_name, pagesize = landscape(A4)) 
+    c.setFont(fnt, sz, leading=None)
+    
+    heighty = 520
+    widthy = 100
+    max_width = 800
+    width_dec = 30
+    
+    
     #header text
-    c.drawCentredString(110, 800, course_name + ' Marksheet')
-
+    c.drawCentredString(110, 550, course_name + ' Marksheet')
+    c.drawCentredString(800, 550, 'H')
+    
+    tmp_data = csv.reader(open(data_file, "rb"))
+    hdngs = next(tmp_data)
+    num_cols = len(hdngs)
+    
+    if num_cols > 35:
+        width_dec = 600/num_cols
+        sz = 8
+        c.setFont(fnt, sz, leading=None)
+    elif num_cols > 20:
+        width_dec = 600/num_cols
+        sz = 10
+        c.setFont(fnt, sz, leading=None)
+        
+        
+       
+    
+    
+    print num_cols
+    
     marks_data = csv.reader(open(data_file, "rb"))
     for row in marks_data:
-        widthy += 70
+        
         heighty -= 20
         
         c.drawCentredString(widthy, heighty, row[0])
         widthy += 70
-        c.drawCentredString(widthy, heighty, row[1])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[2])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[3])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[4])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[5])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[6])
-        widthy += 40
-        c.drawCentredString(widthy, heighty, row[7])
         
-        widthy = 30
+        for k in range(1, num_cols):
+            c.drawCentredString(widthy, heighty, row[k])
+            widthy += width_dec
+            
+        widthy = 100
+        
+        if heighty < 50:
+            c.showPage()
+            heighty = 550
+            c.setFont(fnt, sz, leading=None)
+        
     #save pdf page, use for each page
     c.showPage()
     #print 'created'
