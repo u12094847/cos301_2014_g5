@@ -1,7 +1,7 @@
 import csv
 from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import Report
-#from Report import Report
+
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.lib import colors
@@ -22,8 +22,8 @@ class AssessmentReport(Report):
         tmpArray = []
         count = 0
         i = 0
-        for row in data[0]:
-            self.studentNumbers.append(row)
+        
+           
         
         while count < len(data) :
             #print data[count]
@@ -33,6 +33,8 @@ class AssessmentReport(Report):
             for col in data[count] :
                 if c > 0 :
                     row.append(col)
+                else:
+                     self.studentNumbers.append(col)
                 c += 1
             tmpArray.append(row)
             i += 1
@@ -40,7 +42,6 @@ class AssessmentReport(Report):
         
         count = 0
         i = 0
-        self.chartData =  tmpArray
         
         while count < len(tmpArray) :
             tmpArray2 = []
@@ -48,7 +49,6 @@ class AssessmentReport(Report):
                 cols = len(row)
                 if i < cols :
                     tmpArray2.append(row[i])
-                
             i += 1
             count += 1
             if not tmpArray2 :
@@ -64,7 +64,6 @@ class AssessmentReport(Report):
   
     def getName(self):
         return self.reportName
-
     def getHeadings(self):
         return self.headings
     def getData(self):
@@ -84,7 +83,6 @@ class AssessmentReport(Report):
         chart.y = 50
         chart.height = 125
         chart.width = 300
-        
         chart.strokeColor = colors.black
         chart.valueAxis.valueMin = 0
         chart.valueAxis.valueMax = 100
@@ -93,10 +91,9 @@ class AssessmentReport(Report):
         chart.categoryAxis.labels.dx = 8
         chart.categoryAxis.labels.dy = -2
         chart.categoryAxis.labels.angle = 0
-        chart.data =  self.marks#[[1,2], [3,4]]
+        chart.data = self.marks
         chart.categoryAxis.categoryNames = self.studentNumbers
         
-
         d.add(chart)
         #d.save(fnRoot='test', formats=['png', 'pdf'])
         return d
