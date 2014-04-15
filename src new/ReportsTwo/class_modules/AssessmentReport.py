@@ -56,9 +56,10 @@ class AssessmentReport(Report):
             else :
                 self.marks.append(tmpArray2)
         
-        # calculate average for each column
+        # calculate average and stdDeviation for each column
         for col in self.marks :
             self.averages.append(self.average(col))
+            self.stdDeviations.append(self.stdDeviation(col))
             
         print self.averages 
   
