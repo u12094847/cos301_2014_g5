@@ -3,6 +3,10 @@ from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import Report
 
 class AuditReport(Report):
+  reportName=""
+  headings=""
+  data=""
+  
   def __init__(self,reportName,headings,data):
     self.reportName = reportName
     self.headings = headings

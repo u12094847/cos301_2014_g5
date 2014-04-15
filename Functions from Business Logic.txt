@@ -1,13 +1,9 @@
 
 For Audit:
 	getTableAudit(course,table,from,to) 		: returns audit table for a specific table
-
 	getUserAudit(course,user,from,to) 		: returns audit table for spesific user
-
 	getUserTableAudit(course,user,table,from,to) 	: returs audit table for a specific user in a specific table
-
 	getTotals(course,Assessments[])			: returns all totals of selected assessments
-
 	getTotals(course)				: returns all totals of assessments
 
 	
