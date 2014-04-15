@@ -1,0 +1,13 @@
+
+All:
+getReportName()		: Returns the name of current Report Object
+getHeadings()		: Returns the headings of the data tables
+getData()		: Returns the data of the current report
+
+StudentReports + AssessmentReports:
+?getTotals()		: Returns array of what the marks in data count out of
+
+AssessmentReports:
+getStdDeviation()	: Returns array of the standard deviation of all colomns in AssessmentReport
+getAverage()		: Returns array of the Averages of all colomns in AssessmentReport
+getChart()		: Returns chart of marks in AssessmentReport

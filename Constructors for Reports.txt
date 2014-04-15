@@ -1,0 +1,10 @@
+Audit:
+	AuditReport(reportName,headings,data)
+
+StudentMarksReport:
+	StudentMarksReport(name,headings,data)
+
+AssessmentReport:
+	AssessmentReport(name,headings,data)
+	
+//Totals to be added? eg. AssessmentReport(name,headings,totals,data)

@@ -1,0 +1,19 @@
+For Audit:
+	getTableAudit(course,table,from,to) 		: returns audit table for a specific table
+
+	getUserAudit(course,user,from,to) 		: returns audit table for spesific user
+
+	getUserTableAudit(course,user,table,from,to) 	: returs audit table for a specific user in a specific table
+
+	getTotals(course,Assessments[])			: returns all totals of selected assessments
+
+	notes : the request might specify the to as a empty string and in that case you need to return today's date as to
+	        there should not be a audit for all tables of a specific course seeing as it is a overwelming set of data so there will be no function returning all the audit for a specific course
+
+For Student:
+	getStudentMarks(course,student) 		: returns all marks that the specific student has in a specific course
+	getTotals(course)
+
+For Assessment:
+	getAssessmentMarks(course,Assessments[])	: returns all marks of all students for the specified assessments
+	getTotals(course,Assessments[])			: returns all totals of selected assessments
