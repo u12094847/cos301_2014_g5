@@ -11,17 +11,17 @@ class Report:
     
   
     
-  def average(array):
+  def average(self,array):
     return sum(array) * 1.0 / len(array)
     
 
-  def stdDeviation(array):
+  def stdDeviation(self,array):
     
     
-    avg = average(array)
+    avg = self.average(array)
     variance = map(lambda x: (x - avg)**2, s)
     import math
-    standard_deviation = math.sqrt(average(variance))
+    standard_deviation = math.sqrt(self.average(variance))
     return standard_deviation
     
     
