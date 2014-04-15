@@ -13,7 +13,8 @@ For Audit:
 	
 For Student:
 	getStudentMarks(course,student) 		: returns all marks that the specific student has in a specific course
-	getStudentMarks(course,student, assessments[]) 		: returns all marks that the specific student has in a specific course for specified assessments
+	getStudentMarks(course,student, assessments[]) 	: returns all marks that the specific student has in a specific course for specified assessments
+	getTotals(course,Assessments[])			: returns all totals of selected assessments
 	getTotals(course)
 
 For Assessment:
