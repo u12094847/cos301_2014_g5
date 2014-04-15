@@ -1,5 +1,4 @@
 
-
 class Report:
   def __init__(self, doc_heading, column_headings, body):
     self.doc_heading = doc_heading
@@ -22,7 +21,7 @@ class Report:
     size = 0
     
     for s in array:
-      sum2 += pow((s-average), 2)
+      sum2 += pow((s-self.average(array)), 2)
       size += 1
     dev = math.sqrt(sum2/(size-1))
     return dev
