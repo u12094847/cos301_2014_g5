@@ -16,7 +16,7 @@ class StudentMarksReport:
 	def getData(self):
 		return self.data
 		
-	def getTotals(self)
+	def getTotals(self):
 		return self.totals
 
 
