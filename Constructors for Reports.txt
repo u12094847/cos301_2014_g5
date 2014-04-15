@@ -2,9 +2,9 @@ Audit:
 	AuditReport(reportName,headings,data)
 
 StudentMarksReport:
-	StudentMarksReport(name,headings,data)
+	StudentMarksReport(name,headings,totals,data)
 
 AssessmentReport:
-	AssessmentReport(name,headings,data)
+	AssessmentReport(name,headings,totals,data)
 	
 //Totals to be added? eg. AssessmentReport(name,headings,totals,data)

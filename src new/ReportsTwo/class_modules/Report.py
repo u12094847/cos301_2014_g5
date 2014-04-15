@@ -16,13 +16,26 @@ class Report:
     
 
   def stdDeviation(self,array):
-    
-    
-    avg = self.average(array)
-    variance = map(lambda x: (x - avg)**2, s)
     import math
-    standard_deviation = math.sqrt(self.average(variance))
-    return standard_deviation
+    dev = 0.0
+    sum2 = 0.0
+    size = 0
+    
+    for s in array:
+      sum2 += pow((s-average), 2)
+      size += 1
+    dev = math.sqrt(sum2/(size-1))
+    return dev
+    
+    
+    
+    
+    #avg = self.average(array)
+    #variance = map(lambda x: (x - avg)**2, s)
+    
+    #standard_deviation = math.sqrt(self.average(variance))
+    #return standard_deviation
+    
     
     
     
