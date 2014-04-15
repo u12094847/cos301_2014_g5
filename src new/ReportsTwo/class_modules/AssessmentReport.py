@@ -1,24 +1,66 @@
 import csv
 from class_modules.ReportRequest import ReportRequest
 from class_modules.ReportGenerator import Report
-
+#from Report import Report
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.lib import colors
 
 #from Report import Report
 
 class AssessmentReport(Report):
-    reportName = ""
-    headings = []
-    data = []
-    marks = []
-    def __init__(self,name,headings,data):
+    def __init__(self,name,headings,totals,data):
         self.reportName = name
         self.headings = headings
         self.data = data
-        marks = []
-        for row in data :
-            marks.append(row[1])
+        self.marks = []
+        self.studentNumbers = []
+        self.totalHeadings = len(self.headings)
+        self.totals = totals
+        self.averages = []
+        self.averages.append(0)
+        tmpArray = []
+        count = 0
+        i = 0
+        for row in data[0]:
+            self.studentNumbers.append(row)
+        
+        while count < len(data) :
+            #print data[count]
+            j = len(data[count])
+            row = []
+            c = 0
+            for col in data[count] :
+                if c > 0 :
+                    row.append(col)
+                c += 1
+            tmpArray.append(row)
+            i += 1
+            count += 1
+        
+        count = 0
+        i = 0
+        self.chartData =  tmpArray
+        
+        while count < len(tmpArray) :
+            tmpArray2 = []
+            for row in tmpArray :
+                cols = len(row)
+                if i < cols :
+                    tmpArray2.append(row[i])
+                
+            i += 1
+            count += 1
+            if not tmpArray2 :
+                print ""
+            else :
+                self.marks.append(tmpArray2)
+        
+        # calculate average for each column
+        for col in self.marks :
+            self.averages.append(self.average(col))
+            
+        print self.averages 
   
     def getName(self):
         return self.reportName
@@ -28,23 +70,35 @@ class AssessmentReport(Report):
     def getData(self):
         return self.data
     def getStdDeviation(self):
-        return stdDeviation(marks)
+        return self.stdDeviation(self.marks)
     def getAverage(self):
-        return average(marks)
+        return self.averages
+    def getTotals(self):
+        return self.totals
     def getChart(self):
         d = Drawing(300, 200)
         chart = VerticalBarChart()
         chart.width = 260
         chart.height = 160
-        chart.x = 100
-        chart.y = sum(marks)
-        chart.data = [[1,2], [3,4]]
-        chart.categoryAxis.categoryNames = ['foo', 'bar']
+        chart.x = 50
+        chart.y = 50
+        chart.height = 125
+        chart.width = 300
+        
+        chart.strokeColor = colors.black
         chart.valueAxis.valueMin = 0
+        chart.valueAxis.valueMax = 100
+        chart.valueAxis.valueStep = 10
+        chart.categoryAxis.labels.boxAnchor = 'ne'
+        chart.categoryAxis.labels.dx = 8
+        chart.categoryAxis.labels.dy = -2
+        chart.categoryAxis.labels.angle = 0
+        chart.data =  self.marks#[[1,2], [3,4]]
+        chart.categoryAxis.categoryNames = self.studentNumbers
+        
 
         d.add(chart)
-        d.save(fnRoot='test', formats=['png', 'pdf'])
-        
+        #d.save(fnRoot='test', formats=['png', 'pdf'])
         return d
 
   
