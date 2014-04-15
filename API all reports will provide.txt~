@@ -5,7 +5,7 @@ getHeadings()		: Returns the headings of the data tables
 getData()		: Returns the data of the current report
 
 StudentReports + AssessmentReports:
-getTotals()		: Returns array of what the marks in data count out of
+?getTotals()		: Returns array of what the marks in data count out of
 
 AssessmentReports:
 getStdDeviation()	: Returns array of the standard deviation of all colomns in AssessmentReport
