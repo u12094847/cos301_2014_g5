@@ -15,3 +15,6 @@ class ReportGenerator:
 	
   def generateReport(self, module, userID, alteredTable, dateFrom, dateTo, outputType)
     test = "" #N.B. Remove this line of code when you start
+    
+    #Request data
+    

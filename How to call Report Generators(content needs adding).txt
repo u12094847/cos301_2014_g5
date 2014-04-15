@@ -39,12 +39,3 @@ Example calls:
 	generateReport("COS332", "uid", "Table", "01/01/2014", "12/04/2014", "object")
 	
 	
-
-1. generateReport("assessment", "ST1, ST2", "pdf","null" , "COS332")
-2. generateReport("assessment", "all", "pdf", "null", "COS222")
-3. generateReport("audit", "ST", "csv", "null", "COS301")
-4. generateReport("studentmarks", "P","ARender", "10176382", "COS222")
-N.B. The request arguments must be encapsulated in a json object instead. The list of examples
-above is meant to bring about a clearer understanding of the parameter list.
-An actual call would be something like: generateReport(request), where request is a JSON object
-containing all arguments listed above.
