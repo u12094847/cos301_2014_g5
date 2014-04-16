@@ -4,8 +4,9 @@ class StudentMarksReport:
 
 		self.name = name
 		self.headings = headings
-		self.data = data
 		self.totals = totals
+		self.data = data
+		
 
 	def getReportName(self):
 		return self.name
