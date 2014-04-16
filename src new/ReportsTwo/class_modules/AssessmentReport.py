@@ -1,6 +1,6 @@
 import csv
-from class_modules.ReportRequest import ReportRequest
-from class_modules.ReportGenerator import Report
+from ReportRequest import ReportRequest
+from Report import Report
 
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart

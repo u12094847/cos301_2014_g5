@@ -1,16 +1,16 @@
-from class_modules.ReportRequest import ReportRequest
-from class_modules.ReportGenerator import ReportGenerator
-from class_modules.Report import Report
-from class_modules.AuditReport import AuditReport
-from class_modules.StudentMarksReport import StudentMarksReport
-from class_modules.AssessmentReport import AssessmentReport
+
+from ReportGenerator import ReportGenerator
+from Report import Report
+from AuditReport import AuditReport
+from StudentMarksReport import StudentMarksReport
+from AssessmentReport import AssessmentReport
 
 class WebReportGenerator(ReportGenerator):
   def __init__(self):		#Constructor
     test = ""
    
   
-  def generateReport(self, module, assessment, outputType): #Assessment Report
+  def generateAssessmentReport(self, module, assessment, outputType): #Assessment Report
 
             if outputType == "object":
                     
@@ -38,7 +38,7 @@ class WebReportGenerator(ReportGenerator):
                   
   #--------------------------------------------------------------------------------------------------
   
-  def generateReport(self, module, studentNo, assessments, outputType):  #Student Marks Report
+  def generateStudentMarksReport(self, module, studentNo, assessments, outputType):  #Student Marks Report
                     
             if outputType == "object":
                     
@@ -70,7 +70,7 @@ class WebReportGenerator(ReportGenerator):
                     return "Error: Incorrect output type"
 
 
-  def generateReport(self, module, userID, alteredTable, dateFrom, dateTo, outputType):  #Audit Report
+  def generateAuditReport(self, module, userID, alteredTable, dateFrom, dateTo, outputType):  #Audit Report
           
             if outputType == "object":
                  

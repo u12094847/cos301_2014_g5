@@ -1,6 +1,6 @@
 import csv
-from class_modules.ReportRequest import ReportRequest
-from class_modules.ReportGenerator import Report
+
+from Report import Report
 
 class AuditReport(Report):
   reportName=""
