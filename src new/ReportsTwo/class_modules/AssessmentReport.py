@@ -8,6 +8,7 @@ from reportlab.lib import colors
 
 #from Report import Report
 
+
 class AssessmentReport(Report):
     def __init__(self,name,headings,totals,data):
         self.reportName = name
@@ -18,13 +19,17 @@ class AssessmentReport(Report):
         self.totalHeadings = len(self.headings)
         self.totals = totals
         self.averages = []
-        self.averages.append(0)
+        #self.averages.append(0)
+        self.stdDeviations = []
         tmpArray = []
         count = 0
         i = 0
-        
-           
-        
+        self.chartXValues = []
+        k = 0
+        for col in self.headings :
+            if k > 0 :
+                self.chartXValues.append(col)
+            k += 1
         while count < len(data) :
             #print data[count]
             j = len(data[count])
@@ -61,7 +66,8 @@ class AssessmentReport(Report):
             self.averages.append(self.average(col))
             self.stdDeviations.append(self.stdDeviation(col))
             
-        print self.averages 
+        #print self.averages
+        #print self.stdDeviations        
   
     def getName(self):
         return self.reportName
@@ -70,16 +76,20 @@ class AssessmentReport(Report):
     def getData(self):
         return self.data
     def getStdDeviation(self):
-        return self.stdDeviation(self.marks)
+        return self.stdDeviations
     def getAverage(self):
         return self.averages
     def getTotals(self):
         return self.totals
+    def getMarks(self):
+        return self.marks
+    def getStudentNumbers(self):
+        return self.studentNumbers
     def getChart(self):
         d = Drawing(300, 200)
         chart = VerticalBarChart()
-        chart.width = 260
-        chart.height = 160
+        chart.width = 560
+        chart.height = 460
         chart.x = 50
         chart.y = 50
         chart.height = 125
@@ -92,12 +102,15 @@ class AssessmentReport(Report):
         chart.categoryAxis.labels.dx = 8
         chart.categoryAxis.labels.dy = -2
         chart.categoryAxis.labels.angle = 0
-        chart.data = self.marks
-        chart.categoryAxis.categoryNames = self.studentNumbers
+        chart.data = self.marks#self.averages
+        chart.categoryAxis.categoryNames = self.chartXValues#self.studentNumbers
         
         d.add(chart)
         #d.save(fnRoot='test', formats=['png', 'pdf'])
         return d
+
+  
+
 
   
 
